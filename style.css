@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+}
+.main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    height: 40%;
+    width: 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+figure{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(img/6-jezioro.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+/* change in dimensions of the image when hovering over the container */
+.container:hover>figure{
+    height: 90%;
+    width: 90%;
+    transition: all 0.5s ease-in-out;
+}
+
+p{
+    position: absolute;
+    text-transform: uppercase;
+    background-color: rgba( 0, 0, 0, 0.9);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    opacity: 0;
+}
+/* transition effect not only when hovering over the figure element with image but also when hovering over the container; thanks to that 'caption' will be visible also when pointer won't be excatly over the figure element*/
+figure:hover>p, .container:hover figure p{
+    opacity: 1;
+    font-size: 4em;
+    transition: all 0.5s linear;
+}
+
+/* top border of image */
+.container::before{
+    position: absolute;
+    height: 0.01%;
+    width: 1%;
+    border: 2px solid #000;
+    border-bottom-color: transparent; /* this one won't be needed as pseudo-element 'grows' from top center part of the image to its center that's why we need only the top border to be visible at this point */
+    border-right-color: transparent;
+    border-left-color: transparent;
+    top: -5px;
+    left: 50%;
+    content:"";
+    opacity: 0;
+}
+
+.container:hover::before{
+    width: 101%;
+    left: -5px;
+    right: -5px;
+    opacity: 1;
+    height: 51%;
+    border-left-color: #000; /* changing colors for the left and right border so that when pseudo-element changes its hight they will be visible*/
+    border-right-color: #000;
+    /* height transition postponed by 1.2s so that by the time it starts pseudo-element has its full width*/
+    transition: width 1s linear 0s, left 1s linear 0s, opacity 1s linear 0s, height 2s linear 1.2s; 
+}
+
+/* bottom border of image */
+.container::after{
+    position: absolute;
+    height: 0.01%;
+    width: 1%;
+    border: 2px solid #000;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    bottom: -5px;
+    left: 50%;
+    content:"";
+    opacity: 0;
+}
+
+.container:hover::after{
+    width: 101%;
+    left: -5px;
+    right: 5px;
+    bottom: -5px;
+    opacity: 1;
+    height: 51%;
+    border-left-color: #000;
+    border-right-color: #000;
+    transition: width 1s linear 0s, left 1s linear 0s, opacity 1s linear 0s, height 2s linear 1.2s; 
+}
