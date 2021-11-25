@@ -59,7 +59,7 @@ figure:hover>p, .container:hover figure p{
     height: 0.01%;
     width: 1%;
     border: 2px solid #000;
-    border-bottom-color: transparent; /* this one won't be needed as pseudo-element 'grows' from top center part of the image to its center that's why we need only the top border to be visible at this point */
+    border-bottom-color: transparent; /* this one won't be needed as the pseudo-element 'grows' from top center part of the image to its center that's why we need only the top border to be visible at this point */
     border-right-color: transparent;
     border-left-color: transparent;
     top: -5px;
@@ -80,7 +80,7 @@ figure:hover>p, .container:hover figure p{
     transition: width 1s linear 0s, left 1s linear 0s, opacity 1s linear 0s, height 2s linear 1.2s; 
 }
 
-/* bottom border of image */
+/* bottom border of image*/
 .container::after{
     position: absolute;
     height: 0.01%;
@@ -94,7 +94,7 @@ figure:hover>p, .container:hover figure p{
     content:"";
     opacity: 0;
 }
-
+/*element 'grows' from bottom of the image to its center*/
 .container:hover::after{
     width: 101%;
     left: -5px;
